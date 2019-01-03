@@ -10,6 +10,10 @@ module InternalStyles
       end
     end
 
+    def title?
+      content_for?(:title)
+    end
+
     def header_button(label, href, options = {})
       class_name = options[:class] || 'secondary'
 
