@@ -1,0 +1,67 @@
+ruby:
+  nav_item = Struct.new(:label, :icon, :uri) do
+    def active?(request)
+      request.path.starts_with?(uri)
+    end
+  end
+
+  nav_items = InternalStyles.config.nav_items.map do |attrs|
+    nav_item.new(*attrs)
+  end
+
+nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+  .sidebar-sticky
+    ul.nav.flex-column
+      - nav_items.each do |item|
+        li.nav-item
+          a.nav-link href=item.uri class=(item.active?(request) && "active")
+            = fa_icon item.icon
+            |&nbsp;#{item.label}
+
+            / span class="sr-only" (current)
+
+
+    h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+      | External Services
+
+    ul.nav.flex-column
+      li.nav-item
+        a.nav-link href="https://smarteacher-staging.signin.aws.amazon.com/console"
+          = fa_icon 'book'
+          | &nbsp;Staging AWS
+        a.nav-link href="https://prodigy-dev.signin.aws.amazon.com/console"
+          = fa_icon 'book'
+          | &nbsp;Dev AWS
+
+
+    / <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+    /   <span>Saved reports</span>
+    /   <a class="d-flex align-items-center text-muted" href="#">
+    /     <span data-feather="plus-circle"></span>
+    /   </a>
+    / </h6>
+    / <ul class="nav flex-column mb-2">
+    /   <li class="nav-item">
+    /     <a class="nav-link" href="#">
+    /       <span data-feather="file-text"></span>
+    /       Current month
+    /     </a>
+    /   </li>
+    /   <li class="nav-item">
+    /     <a class="nav-link" href="#">
+    /       <span data-feather="file-text"></span>
+    /       Last quarter
+    /     </a>
+    /   </li>
+    /   <li class="nav-item">
+    /     <a class="nav-link" href="#">
+    /       <span data-feather="file-text"></span>
+    /       Social engagement
+    /     </a>
+    /   </li>
+    /   <li class="nav-item">
+    /     <a class="nav-link" href="#">
+    /       <span data-feather="file-text"></span>
+    /       Year-end sale
+    /     </a>
+    /   </li>

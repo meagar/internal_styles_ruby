@@ -1,0 +1,38 @@
+doctype html
+html
+  head
+    title= t('internal_styles.layout.page_title')
+
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+
+    = content_for :stylesheets
+  body
+    = render 'top_nav'
+    .container-fluid
+      .row
+        = render 'nav'
+        main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4 role="main"
+          .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+            h2
+              - if content_for(:back)
+                a href=content_for(:back) <
+                | &nbsp;
+              = content_for(:title)
+            - if content_for?(:header_actions)
+            .btn-toolbar.mb-2.mb-md-0
+              .btn-group.mr-2
+                = content_for(:header_actions)
+
+          = render 'flash_notices'
+          = yield
+
+    script src="https://unpkg.com/feather-icons/dist/feather.min.js"
+
+    javascript:
+      feather.replace()
+
+    = content_for :javascripts
