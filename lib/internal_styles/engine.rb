@@ -4,5 +4,7 @@ module InternalStyles
 
     require 'bootstrap/engine'
     require 'font-awesome-rails'
+    require 'jquery-rails'
+    require 'popper_js'
   end
 end
