@@ -6,12 +6,16 @@ module InternalStyles
       @nav_block = block if block_given?
     end
 
-    def nav_items
+    def nav_helper
+      return @nav if @nav
+
+      @nav = InternalStyles::NavHelper.new
+      
       if @nav_block
-        @nav_items ||= Rails.application.routes.url_helpers.instance_eval(&@nav_block)
+        Rails.application.routes.url_helpers.instance_exec(@nav, &@nav_block)
       end
 
-      @nav_items || []
+      @nav
     end
   end
 

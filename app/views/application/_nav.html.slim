@@ -5,14 +5,11 @@ ruby:
     end
   end
 
-  nav_items = InternalStyles.config.nav_items.map do |attrs|
-    nav_item.new(*attrs)
-  end
-
+  nav = InternalStyles.config.nav_helper
 nav.col-md-2.d-none.d-md-block.bg-light.sidebar
   .sidebar-sticky
     ul.nav.flex-column
-      - nav_items.each do |item|
+      - nav.items.map { |item| nav_item.new(*item) }.each do |item|
         li.nav-item
           a.nav-link href=item.uri class=(item.active?(request) && "active")
             = fa_icon item.icon
@@ -20,18 +17,16 @@ nav.col-md-2.d-none.d-md-block.bg-light.sidebar
 
             / span class="sr-only" (current)
 
+    - nav.sub_navs.each do |name, sub_items|
+      h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+        = name
 
-    h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
-      | External Services
-
-    ul.nav.flex-column
-      li.nav-item
-        a.nav-link href="https://smarteacher-staging.signin.aws.amazon.com/console"
-          = fa_icon 'book'
-          | &nbsp;Staging AWS
-        a.nav-link href="https://prodigy-dev.signin.aws.amazon.com/console"
-          = fa_icon 'book'
-          | &nbsp;Dev AWS
+      - sub_items.items.map { |item| nav_item.new(*item) }.each do |item|
+        ul.nav.flex-column
+          li.nav-item
+            a.nav-link href=item.uri class=(item.active?(request) && "active")
+              = fa_icon item.icon
+              | &nbsp;#{item.label}
 
 
     / <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
