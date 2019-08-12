@@ -1,0 +1,7 @@
+ul.nav.flex-column
+  - items.each do |item|
+    - if !item.options[:if] || controller.instance_exec(&item.options[:if])
+      li.nav-item
+        a.nav-link href=item.uri class=(item.active?(request.path) && "active")
+          = fa_icon item.icon
+          |&nbsp;#{item.label}
