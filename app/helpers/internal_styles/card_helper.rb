@@ -91,7 +91,7 @@ module InternalStyles
     # See +card+
     #
     # ==== Examples
-    # Given a record of type `ProdigyUser`, with an id of `123` and name of "Jane"
+    # Given a record of type <tt>ProdigyUser</tt>, with an id of <tt>123</tt> and name of <tt>"Jane"</tt>
     #
     #    <%= card_for(user, 'User Info') do %>
     #       This user's name is <%= user.name %>
