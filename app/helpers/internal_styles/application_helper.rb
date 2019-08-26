@@ -1,4 +1,7 @@
 module InternalStyles
+  include CardHelper
+  include ListHelper
+
   module ApplicationHelper
     def title(value = nil, &block)
       if block_given?
@@ -22,6 +25,22 @@ module InternalStyles
 
       content_for(:header_actions) do
         link_to(label, href, options)
+      end
+    end
+
+    def dl(pairs, **options)
+      content_tag(:dl, **options) do
+        safe_join(pairs.flat_map do |k,v|
+          [content_tag(:dt, k), content_tag(:dd, v)]
+        end)
+      end
+    end
+
+    def errors_for(record)
+      content_tag(:ul, class: 'errors') do
+        safe_join(record.errors.full_messages.map do |message|
+          content_tag(:li, message)
+        end)
       end
     end
   end
