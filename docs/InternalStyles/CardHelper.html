@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module InternalStyles::CardHelper - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-card">#card</a>
+    
+    <li ><a href="#method-i-card_for">#card_for</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-InternalStyles::CardHelper">
+  <h1 id="module-InternalStyles::CardHelper" class="module">
+    module InternalStyles::CardHelper
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-card" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">card</span><span
+            class="method-args">(header = nil, **options, &amp;block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Generate a Bootstrap card with the given header</p>
+
+<h4 id="method-i-card-label-Signatures">Signatures<span><a href="#method-i-card-label-Signatures">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<pre class="ruby"><span class="ruby-comment"># with a header</span>
+<span class="ruby-identifier">card</span>(<span class="ruby-identifier">header</span>, <span class="ruby-identifier">options</span> = {}) <span class="ruby-keyword">do</span>
+  <span class="ruby-comment"># card body</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-comment"># with no header</span>
+<span class="ruby-identifier">card</span>(<span class="ruby-identifier">options</span> = {}) <span class="ruby-keyword">do</span>
+  <span class="ruby-comment"># card body</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<h4 id="method-i-card-label-Options">Options<span><a href="#method-i-card-label-Options">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<ul><li>
+<p><code>:id</code> - The ID of the outer &lt;div class=“card”&gt; element</p>
+</li><li>
+<p><code>:class</code> - Additional classes to add to the &lt;div class=“card”&gt; element</p>
+</li><li>
+<p><code>:body_class</code> - Additional classes to add to the &lt;div class=“card-body”&gt; element</p>
+</li><li>
+<p><code>:header_class</code> - Additional classes to add to the &lt;div class=“card-header”&gt; element</p>
+</li></ul>
+
+<h4 id="method-i-card-label-Examples">Examples<span><a href="#method-i-card-label-Examples">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Generating a simple card with a header:</p>
+
+<pre>&lt;%= card(&#39;Test Card&#39;) do %&gt;
+  This is the body of the test card
+&lt;% end %&gt;
+# =&gt; &lt;div class=&quot;card&quot;&gt;
+       &lt;div class=&quot;card-header&quot;&gt;
+         Test Card
+       &lt;/div&gt;
+       &lt;div class=&quot;card-body&quot;&gt;
+         This is the body of the test card
+       &lt;/div&gt;
+     &lt;/div&gt;</pre>
+
+<p>A Card with no header</p>
+
+<pre>&lt;%= card do %&gt;
+  Test Body
+&lt;% end %&gt;
+# =&gt; &lt;div class=&quot;card&quot;&gt;
+       &lt;div class=&quot;card-body&quot;&gt;
+         Test Body
+       &lt;/div&gt;
+     &lt;/div&gt;</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="card-source">
+            <pre><span class="ruby-comment"># File app/helpers/internal_styles/card_helper.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">card</span>(<span class="ruby-identifier">header</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">**</span><span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">header</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">options</span> = <span class="ruby-identifier">header</span>
+    <span class="ruby-identifier">header</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">classes</span> = [<span class="ruby-string">&#39;card mb-3&#39;</span>] <span class="ruby-operator">+</span> <span class="ruby-constant">Array</span>.<span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:class</span>])
+  <span class="ruby-identifier">header_classes</span> = [<span class="ruby-string">&#39;card-header&#39;</span>] <span class="ruby-operator">+</span> <span class="ruby-constant">Array</span>.<span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:header_class</span>])
+  <span class="ruby-identifier">body_classes</span> = [<span class="ruby-string">&#39;card-body&#39;</span>] <span class="ruby-operator">+</span> <span class="ruby-constant">Array</span>.<span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:body_class</span>])
+
+  <span class="ruby-identifier">id</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:id</span>]
+
+  <span class="ruby-identifier">body_proc</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:body_proc</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">body_classes</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:div</span>, <span class="ruby-value">class:</span> <span class="ruby-identifier">body_classes</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:div</span>, <span class="ruby-value">class:</span> <span class="ruby-identifier">classes</span>, <span class="ruby-value">id:</span> <span class="ruby-identifier">id</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">buffer</span> = []
+    <span class="ruby-identifier">buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:div</span>, <span class="ruby-identifier">header</span>, <span class="ruby-value">class:</span> <span class="ruby-identifier">header_classes</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">header</span>
+    <span class="ruby-identifier">buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">body_proc</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">body_classes</span>)
+
+    <span class="ruby-identifier">safe_join</span>(<span class="ruby-identifier">buffer</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-card_for" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">card_for</span><span
+            class="method-args">(record, header = nil, **options, &amp;block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Generate a card for the given record, automatically populating the `id` and `class` attribute using `dom_id` and `dom_class` respectively.</p>
+
+<h4 id="method-i-card_for-label-Signatures">Signatures<span><a href="#method-i-card_for-label-Signatures">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<pre class="ruby"><span class="ruby-comment"># with a header</span>
+<span class="ruby-identifier">card_for</span>(<span class="ruby-identifier">record</span>, <span class="ruby-identifier">header</span>, <span class="ruby-identifier">options</span> = {}) <span class="ruby-keyword">do</span>
+  <span class="ruby-comment"># card body</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-comment"># with no header</span>
+<span class="ruby-identifier">card_for</span>(<span class="ruby-identifier">record</span>, <span class="ruby-identifier">options</span> = {}) <span class="ruby-keyword">do</span>
+  <span class="ruby-comment"># card body</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<h4 id="method-i-card_for-label-Options">Options<span><a href="#method-i-card_for-label-Options">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>See <code>card</code></p>
+
+<h4 id="method-i-card_for-label-Examples">Examples<span><a href="#method-i-card_for-label-Examples">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Given a record of type `ProdigyUser`, with an id of `123` and name of “Jane”</p>
+
+<pre>&lt;%= card_for(user, &#39;User Info&#39;) do %&gt;
+   This user&#39;s name is &lt;%= user.name %&gt;
+&lt;% end %&gt;
+# =&gt; &lt;div id=&quot;prodigy_user_123&quot; class=&quot;card prodigy_user&quot;&gt;
+       &lt;div class=&quot;card-header&quot;&gt;
+         User Info
+       &lt;/div&gt;
+       &lt;div class=&quot;card-body&quot;&gt;
+         This user&#39;s name is Jane
+       &lt;/div&gt;
+     &lt;/div&gt;</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="card_for-source">
+            <pre><span class="ruby-comment"># File app/helpers/internal_styles/card_helper.rb, line 106</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">card_for</span>(<span class="ruby-identifier">record</span>, <span class="ruby-identifier">header</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">**</span><span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">header</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">options</span> = <span class="ruby-identifier">header</span>
+    <span class="ruby-identifier">header</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:id</span>] = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:id</span>, <span class="ruby-identifier">dom_id</span>(<span class="ruby-identifier">record</span>))
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:class</span>] = [<span class="ruby-identifier">dom_class</span>(<span class="ruby-identifier">record</span>)] <span class="ruby-operator">+</span> <span class="ruby-constant">Array</span>.<span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:class</span>])
+
+  <span class="ruby-identifier">card</span>(<span class="ruby-identifier">header</span>, <span class="ruby-operator">**</span><span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
