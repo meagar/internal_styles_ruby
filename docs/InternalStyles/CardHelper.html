@@ -219,7 +219,7 @@
 
         <div class="method-description">
           
-          <p>Generate a card for the given record, automatically populating the `id` and `class` attribute using `dom_id` and `dom_class` respectively.</p>
+          <p>Generate a card for the given record, automatically populating the <code>id</code> and <code>class</code> attribute using <code>dom_id</code> and <code>dom_class</code> respectively.</p>
 
 <h4 id="method-i-card_for-label-Signatures">Signatures<span><a href="#method-i-card_for-label-Signatures">&para;</a> <a href="#top">&uarr;</a></span></h4>
 
@@ -258,7 +258,7 @@
 
           
           <div class="method-source-code" id="card_for-source">
-            <pre><span class="ruby-comment"># File app/helpers/internal_styles/card_helper.rb, line 106</span>
+            <pre><span class="ruby-comment"># File app/helpers/internal_styles/card_helper.rb, line 107</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">card_for</span>(<span class="ruby-identifier">record</span>, <span class="ruby-identifier">header</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">**</span><span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">header</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">empty?</span>

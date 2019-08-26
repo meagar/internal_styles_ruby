@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module InternalStyles::ApplicationHelper - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
+
+<link href="../css/fonts.css" rel="stylesheet">
+<link href="../css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-dl">#dl</a>
+    
+    <li ><a href="#method-i-errors_for">#errors_for</a>
+    
+    <li ><a href="#method-i-header_button">#header_button</a>
+    
+    <li ><a href="#method-i-title">#title</a>
+    
+    <li ><a href="#method-i-title-3F">#title?</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-InternalStyles::ApplicationHelper">
+  <h1 id="module-InternalStyles::ApplicationHelper" class="module">
+    module InternalStyles::ApplicationHelper
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-dl" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">dl</span><span
+            class="method-args">(pairs, **options)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Generate a <code>&lt;dl&gt;</code> for the given hash of keys (terms) and values (definitions)</p>
+
+<h4 id="method-i-dl-label-Signatures">Signatures<span><a href="#method-i-dl-label-Signatures">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<pre>dl(key1 =&gt; value1, key2 =&gt; value2, ..., options = {})</pre>
+
+<h4 id="method-i-dl-label-Options">Options<span><a href="#method-i-dl-label-Options">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>All options are passed directly to the outer <code>content_tag</code> that generates the &lt;tt&gt;&lt;dl&gt;&lt;/tl&gt; element.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="dl-source">
+            <pre><span class="ruby-comment"># File app/helpers/internal_styles/application_helper.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">dl</span>(<span class="ruby-identifier">pairs</span>, <span class="ruby-operator">**</span><span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:dl</span>, <span class="ruby-operator">**</span><span class="ruby-identifier">options</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">safe_join</span>(<span class="ruby-identifier">pairs</span>.<span class="ruby-identifier">flat_map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+      [<span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:dt</span>, <span class="ruby-identifier">k</span>), <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:dd</span>, <span class="ruby-identifier">v</span>)]
+    <span class="ruby-keyword">end</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-errors_for" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">errors_for</span><span
+            class="method-args">(record)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="errors_for-source">
+            <pre><span class="ruby-comment"># File app/helpers/internal_styles/application_helper.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">errors_for</span>(<span class="ruby-identifier">record</span>)
+  <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:ul</span>, <span class="ruby-value">class:</span> <span class="ruby-string">&#39;errors&#39;</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">safe_join</span>(<span class="ruby-identifier">record</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">full_messages</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">message</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:li</span>, <span class="ruby-identifier">message</span>)
+    <span class="ruby-keyword">end</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-header_button" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">header_button</span><span
+            class="method-args">(label, href, options = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="header_button-source">
+            <pre><span class="ruby-comment"># File app/helpers/internal_styles/application_helper.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">header_button</span>(<span class="ruby-identifier">label</span>, <span class="ruby-identifier">href</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">class_name</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:class</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&#39;secondary&#39;</span>
+
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:class</span>] = <span class="ruby-string">&#39;btn btn-sm&#39;</span>
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:class</span>] <span class="ruby-operator">+=</span> <span class="ruby-node">&quot; btn-outline-#{class_name}&quot;</span>
+
+  <span class="ruby-identifier">content_for</span>(<span class="ruby-value">:header_actions</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">link_to</span>(<span class="ruby-identifier">label</span>, <span class="ruby-identifier">href</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-title" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">title</span><span
+            class="method-args">(value = nil, &amp;block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="title-source">
+            <pre><span class="ruby-comment"># File app/helpers/internal_styles/application_helper.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">title</span>(<span class="ruby-identifier">value</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;`title` requires a title or a block&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">content_for</span>(<span class="ruby-value">:title</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;`title` requires a title or a block&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">content_for</span>(<span class="ruby-value">:title</span>) { <span class="ruby-identifier">value</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-title-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">title?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="title-3F-source">
+            <pre><span class="ruby-comment"># File app/helpers/internal_styles/application_helper.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">title?</span>
+  <span class="ruby-identifier">content_for?</span>(<span class="ruby-value">:title</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

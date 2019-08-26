@@ -28,6 +28,16 @@ module InternalStyles
       end
     end
 
+    ##
+    # Generate a <tt><dl></tt> for the given hash of keys (terms) and values (definitions)
+    #
+    # ==== Signatures
+    #
+    #    dl(key1 => value1, key2 => value2, ..., options = {})
+    #
+    # ==== Options
+    #
+    # All options are passed directly to the outer +content_tag+ that generates the <tt><dl></tl> element.
     def dl(pairs, **options)
       content_tag(:dl, **options) do
         safe_join(pairs.flat_map do |k,v|

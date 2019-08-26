@@ -71,8 +71,9 @@ module InternalStyles
       end
     end
 
-    # Generate a card for the given record, automatically populating the `id` and `class` attribute
-    # using `dom_id` and `dom_class` respectively.
+    ##
+    # Generate a card for the given record, automatically populating the <tt>id</tt> and <tt>class</tt> attribute
+    # using <tt>dom_id</tt> and <tt>dom_class</tt> respectively.
     #
     # ==== Signatures
     #
