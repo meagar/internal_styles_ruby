@@ -1,0 +1,4 @@
+<% user = User.new(id: 4567, name: 'John Smith') %>
+<%= card_for(user, 'User Info' ) do %>
+  <p>Name: <%= user.name %></p>
+<% end %>

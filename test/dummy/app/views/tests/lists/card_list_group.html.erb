@@ -1,0 +1,16 @@
+<%
+users = [
+  User.new(id: 345, name: 'Jean Luc Picard'),
+  User.new(id: 456, name: 'Katherine Janeway'),
+  User.new(id: 567, name: 'James T. Kirk')
+]
+%>
+<%= card_list_group('Captains', users) do |user| %>
+  <dl>
+    <dt>User ID</dt>
+    <dd><%= user.id %></dd>
+
+    <dt>User Name</dt>
+    <dd><%= user.name %></dd>
+  </dl>
+<% end %>

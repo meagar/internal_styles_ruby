@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  mount InternalStyles::Engine => "/internal_styles"
+  get '/tests/cards' => 'tests#cards'
+  get '/tests/lists' => 'tests#lists'
 end

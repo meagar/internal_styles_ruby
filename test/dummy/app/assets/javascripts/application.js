@@ -10,6 +10,15 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
 //= require rails-ujs
 //= require activestorage
+//= require bootstrap
 //= require_tree .
+
+$(function () {
+  $('ul.nav-tabs a').on('click', function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  });
+});

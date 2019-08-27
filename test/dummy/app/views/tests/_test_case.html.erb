@@ -1,0 +1,34 @@
+<% id = title.parameterize.underscore %>
+<div class="card test-case" id="<%= id %>">
+  <div class="card-header">
+    <a href="#<%= id %>"><%= title %></a>
+  </div>
+
+  <div class="card-body">
+    <h5>Source</h5>
+    <div class="card">
+      <div class="card-body">
+        <%= raw CodeRay.scan(source, :erb).div %>
+      </div>
+    </div>
+
+    <h5>Output</h5>
+    <ul class="nav nav-tabs" id="<%= id %>_tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#<%= id %>_rendered" role="tab">Rendered</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#<%= id %>_html" role="tab">HTML</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="<%= id %>_rendered" role="tabpanel">
+        <%= output %>
+      </div>
+      <div class="tab-pane" id="<%= id %>_html" role="tabpanel">
+        <%= raw CodeRay.scan(Nokogiri::XML(output, &:noblanks).to_xhtml(indent: 3), :html).div %>
+      </div>
+    </div>
+  </div>
+</div>
+

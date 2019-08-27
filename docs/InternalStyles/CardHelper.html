@@ -69,6 +69,8 @@
     
     <li ><a href="#method-i-card_for">#card_for</a>
     
+    <li ><a href="#method-i-card_tag">#card_tag</a>
+    
   </ul>
 </div>
 
@@ -188,7 +190,7 @@
     <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:div</span>, <span class="ruby-value">class:</span> <span class="ruby-identifier">body_classes</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:div</span>, <span class="ruby-value">class:</span> <span class="ruby-identifier">classes</span>, <span class="ruby-value">id:</span> <span class="ruby-identifier">id</span>) <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">card_tag</span>(<span class="ruby-value">id:</span> <span class="ruby-identifier">id</span>, <span class="ruby-value">class:</span> <span class="ruby-identifier">classes</span>) <span class="ruby-keyword">do</span>
     <span class="ruby-identifier">buffer</span> = []
     <span class="ruby-identifier">buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:div</span>, <span class="ruby-identifier">header</span>, <span class="ruby-value">class:</span> <span class="ruby-identifier">header_classes</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">header</span>
     <span class="ruby-identifier">buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">body_proc</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">body_classes</span>)
@@ -258,7 +260,7 @@
 
           
           <div class="method-source-code" id="card_for-source">
-            <pre><span class="ruby-comment"># File app/helpers/internal_styles/card_helper.rb, line 107</span>
+            <pre><span class="ruby-comment"># File app/helpers/internal_styles/card_helper.rb, line 147</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">card_for</span>(<span class="ruby-identifier">record</span>, <span class="ruby-identifier">header</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">**</span><span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block_given?</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">header</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">empty?</span>
@@ -281,6 +283,73 @@
       </div>
 
     
+      <div id="method-i-card_tag" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">card_tag</span><span
+            class="method-args">(**options, &amp;block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Generate a Bootstrap Card tag in the form <code>&lt;div class=&quot;card&quot;&gt;</code></p>
+
+<h4 id="method-i-card_tag-label-Signatures">Signatures<span><a href="#method-i-card_tag-label-Signatures">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<pre class="ruby"><span class="ruby-identifier">card_tag</span>(<span class="ruby-operator">**</span><span class="ruby-identifier">options</span>) <span class="ruby-keyword">do</span>
+  <span class="ruby-comment"># content for card</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<h4 id="method-i-card_tag-label-Options">Options<span><a href="#method-i-card_tag-label-Options">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>The <code>options</code> argument is passed directly through to <code>content_tag</code>, see <a href="https://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-content_tag">api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-content_tag</a>.</p>
+
+<p>The sole exception is that the <code>:class</code> option (if any) has the bootstrap class <code>card</code> added to it.</p>
+
+<h4 id="method-i-card_tag-label-Examples">Examples<span><a href="#method-i-card_tag-label-Examples">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Card with default options:</p>
+
+<pre>&lt;%= card_tag do %&gt;
+  &lt;p&gt;Card content&lt;/p&gt;
+&lt;% end %&gt;
+# =&gt; &lt;div class=&quot;card&quot;&gt;
+       &lt;p&gt;Card content&lt;/p&gt;
+     &lt;/div&gt;</pre>
+
+<p>Card with additional options (note <code>card</code> is still added to the class list):</p>
+
+<pre>&lt;%= card_tag(id: &#39;my-card&#39;, class: &#39;large-card&#39;) do %&gt;
+  &lt;p&gt;Card content&lt;/p&gt;
+&lt;% end %&gt;
+# =&gt; &lt;div id=&quot;my-card&quot; class=&quot;card large-card&quot;&gt;
+       &lt;p&gt;Card content&lt;/p&gt;
+     &lt;/div&gt;</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="card_tag-source">
+            <pre><span class="ruby-comment"># File app/helpers/internal_styles/card_helper.rb, line 109</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">card_tag</span>(<span class="ruby-operator">**</span><span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:class</span>] = [<span class="ruby-string">&#39;card&#39;</span>] <span class="ruby-operator">+</span> <span class="ruby-constant">Array</span>.<span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">options</span>
+  <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:div</span>, <span class="ruby-operator">**</span><span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
     </section>
   
   </section>
@@ -290,7 +359,7 @@
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.0.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

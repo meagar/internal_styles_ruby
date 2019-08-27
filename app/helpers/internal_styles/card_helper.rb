@@ -52,7 +52,7 @@ module InternalStyles
         header = nil
       end
 
-      classes = ['card mb-3'] + Array.wrap(options[:class])
+      classes = Array.wrap(options[:class])
       header_classes = ['card-header'] + Array.wrap(options[:header_class])
       body_classes = ['card-body'] + Array.wrap(options[:body_class])
 
@@ -62,13 +62,53 @@ module InternalStyles
         content_tag(:div, class: body_classes, &block)
       end
 
-      content_tag(:div, class: classes, id: id) do
+      card_tag(id: id, class: classes) do
         buffer = []
         buffer << content_tag(:div, header, class: header_classes) if header
         buffer << body_proc.call(body_classes)
 
         safe_join(buffer)
       end
+    end
+
+    ##
+    # Generate a Bootstrap Card tag in the form <tt><div class="card"></tt>
+    #
+    # ==== Signatures
+    #
+    #  card_tag(**options) do
+    #    # content for card
+    #  end
+    #
+    # ==== Options
+    # The <tt>options</tt> argument is passed directly through to <tt>content_tag</tt>,
+    # see https://api.rubyonrails.org/classes/ActionView/Helpers/TagHelper.html#method-i-content_tag.
+    #
+    # The sole exception is that the <tt>:class</tt> option (if any) has the bootstrap class
+    # <tt>card</tt> added to it.
+    #
+    # ==== Examples
+    #
+    # Card with default options:
+    #
+    #   <%= card_tag do %>
+    #     <p>Card content</p>
+    #   <% end %>
+    #   # => <div class="card">
+    #          <p>Card content</p>
+    #        </div>
+    #
+    # Card with additional options (note <tt>card</tt> is still added to the class list):
+    #
+    #   <%= card_tag(id: 'my-card', class: 'large-card') do %>
+    #     <p>Card content</p>
+    #   <% end %>
+    #   # => <div id="my-card" class="card large-card">
+    #          <p>Card content</p>
+    #        </div>
+    def card_tag(**options, &block)
+      options[:class] = ['card'] + Array.wrap(options[:class])
+      content_tag(:div, **options, &block)
     end
 
     ##

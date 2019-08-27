@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Dummy</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+<% end %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-  </head>
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'application' %>
+<% end %>
 
-  <body>
-    <%= yield %>
-  </body>
-</html>
+<%= render template: 'layouts/internal_styles' %>
