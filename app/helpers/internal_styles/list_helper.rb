@@ -44,10 +44,10 @@ module InternalStyles
         end
       end
 
-      options[:class] = ['list-group-flush'] + Array.wrap(options[:classes])
+      list_group_options = { class: ['list-group-flush'] + Array.wrap(options[:list_classes]) }
 
-      body_proc = Proc.new { list_group(records, options, &block) }
-      card(header, body_proc: body_proc)
+      options[:body_proc] = Proc.new { list_group(records, **list_group_options, &block) }
+      card(header, **options)
     end
 
     ##
