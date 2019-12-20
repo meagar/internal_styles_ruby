@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'bootstrap', '~> 4.3'
   spec.add_dependency 'font-awesome-rails', '~>4.7'
   spec.add_dependency 'slim', '~>4.0'
-  spec.add_dependency 'sass-rails', '~> 5.0'
+  spec.add_dependency 'sass-rails', '~> 6.0'
 
   spec.add_development_dependency "sqlite3"
 end
