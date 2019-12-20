@@ -50,6 +50,22 @@ module InternalStyles
       card(header, **options)
     end
 
+    def card_linked_list_group(header, records, **options, &block)
+      if records.none?
+        return card(header, **options) do
+          content_tag(:p, 'No Content', class: 'empty-card mb-0 ')
+        end
+      end
+
+      list_group_options = {
+        class: ['list-group-flush'] + Array.wrap(options[:list_classes]),
+        href: options[:href]
+      }
+
+      options[:body_proc] = Proc.new { linked_list_group(records, **list_group_options, &block) }
+      card(header, **options)
+    end
+
     ##
     # Geneate a Bootstrap list group for the given records.
     #
@@ -89,6 +105,20 @@ module InternalStyles
       content_tag(:ul, class: classes) do
         safe_join(records.map do |record|
           content_tag(:li, id: dom_id(record), class: "list-group-item #{dom_class(record)}") do
+            block.call(record)
+          end
+        end)
+      end
+    end
+
+    def linked_list_group(records, **options, &block)
+      classes = ['list-group'] + Array.wrap(options[:class])
+      block ||= Proc.new { |record| render record }
+      href = options[:href] || Proc.new { |record| url_for record }
+
+      content_tag(:div, class: classes) do
+        safe_join(records.map do |record|
+          content_tag(:a, href: href.call(record), id: dom_id(record), class: "list-group-item list-group-item-action #{dom_class(record)}") do
             block.call(record)
           end
         end)
