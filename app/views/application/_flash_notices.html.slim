@@ -2,12 +2,12 @@
   .container
     - if flash.notice
       .alert.alert-success.alert-dismissable.fade.show role="alert"
-        = flash.notice
+        = sanitize flash.notice
         button.close type="button" data-dismiss="alert" aria-label="Close"
           span aria-hidden="true" &times;
     - if flash.alert
       .alert.alert-warning.alert-dismissible.fade.show role="alert"
-        = flash.alert
+        = sanitize flash.alert
         button.close type="button" data-dismiss="alert" aria-label="Close"
           span aria-hidden="true" &times;
 
