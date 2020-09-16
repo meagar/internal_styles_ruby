@@ -4,7 +4,7 @@ This is a work-in-progress distillation of internal-facing styles from our inter
 
 # Documentation
 
-This gem adds a few helpers for producing things like cards and lists. See <https://smarteacher.github.io/internal_styles_ruby>
+This gem adds a few helpers for producing things like cards and lists.
 
 # Developing
 
